@@ -1,0 +1,37 @@
+[
+    {
+        "idJuego": 1,
+        "nombre": "Crash Bash",
+        "precio": 1200,
+        "categoria": "Aventura",
+        "descripcion": "Este es un juego de aventura para todas las edades",
+        "imagen": null
+    },
+
+    {
+        "idJuego": 2,
+        "nombre": "Grand Theft Auto San Andreas",
+        "precio": 1300,
+        "categoria": "Accion",
+        "descripcion": "Este es un juego de accion para mayores de 12 años",
+        "imagen": null
+    },
+
+    {
+        "idJuego": 3,
+        "nombre": "Crystal Mines",
+        "precio": 1100,
+        "categoria": "Animacion",
+        "descripcion": "Este es un juego de animacion para mayores de 5 años",
+        "imagen": null
+    },
+
+    {
+        "idJuego": 4,
+        "nombre": "Grand Theft Auto Vice City",
+        "precio": 1400,
+        "categoria": "Accion",
+        "descripcion": "Este es un juego de accion para mayores de 13 años",
+        "imagen": null
+    }
+]

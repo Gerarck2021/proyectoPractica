@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('../partials/head')%>
+<body>
+    
+    <h1>Registro de Usuarios</h1>
+    <form action="/users/registro-usuario" method="POST" class="formulario-login" enctype="multipart/form-data">
+
+        <label for="documento">Documento</label>
+        <input type="number" name="documento" class="dato-form" value="<%= locals.old && old.documento ? old.documento : ''%>">
+        <% if (locals.errores && errores.documento) { %>
+            <p class="errores"><%=errores.documento.msg %> </p>
+        <% } %>
+
+        <label for="nombre">Nombres</label>
+        <input type="text" name="nombre" class="dato-form" placeholder="Nombres y Apellidos" value="<%= locals.old && old.nombre ? old.nombre : ''%>">
+        <% if (locals.errores && errores.nombre) { %>
+            <p class="errores"><%=errores.nombre.msg %> </p>
+        <% } %>
+
+        <label for="correo">Correo</label>
+        <input type="email" name="correo" class="dato-form" placeholder="usuario@ejemplo.com" value="<%= locals.old && old.correo ? old.correo : ''%>">
+        <% if (locals.errores && errores.correo) { %>
+            <p class="errores"><%=errores.correo.msg %> </p>
+        <% } %>
+
+        <label for="contraseña">Contraseña</label>
+        <input type="password" name="contraseña" class="dato-form" placeholder="***********">
+        <% if (locals.errores && errores.contraseña) { %>
+            <p class="errores"><%=errores.contraseña.msg %> </p>
+        <% } %>
+
+        <% let opciones = ['Juegos', 'Noticias', 'Entretenimiento']%>
+        <select name="opcionvista" id="" class="dato-form">
+            <option value="" class="opcion">Elige una opcion</option>
+            <% for(let opcion of opciones) {%>
+                <option value="<%= opcion %>" class="opcion"><%= opcion %></option>
+            <% } %>
+        </select>
+        <% if (locals.errores && errores.opcionvista) { %>
+            <p class="errores"><%=errores.opcionvista.msg %> </p>
+        <% } %>
+
+        <div>
+            <div>
+                <label for="imagenusuario">Imagen de Usuario</label>
+            </div>
+            <div>
+                <input type="file" name="imagenusuario" class="imagen_usuario_registro" accept=".jpg, .png, .jpeg, .gif">
+            </div>
+        </div>
+
+        <div>
+            <button type="sumbit" value="Enviar" class="boton">Enviar</button>
+            <button type="reset" value="Limpiar" class="boton">Limpiar</button>
+        </div>
+    </form>
+    <p class="opciones-secundarias">
+        <a href="/users/inicio-sesion">¿Ya tienes una cuenta? Inicia Sesion</a>
+    </p>
+</body>
+</html>

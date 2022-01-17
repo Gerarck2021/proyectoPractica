@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,700&display=swap');
+
+* {
+    background-color: tomato;
+    font-family: Nunito;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+ul li {
+    list-style: none;
+}
+
+.menu-navegacion {
+    display: flex;
+    justify-content: space-around;
+}
+
+.submenu {
+    background-color: lightgreen;
+    padding: 15px;
+}
+
+ul li a, p a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+ul li a:hover, p a:hover {
+    color: white;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.formulario-login {
+    display:flex;
+    flex-direction: column;
+}
+
+.dato-form {
+    width: 50vw;
+    height: 4vh;
+    background: lightgreen;
+}
+
+.boton {
+    width: 10vw;
+    height: 7vh;
+    background: lightgreen;
+}
+
+.opcion {
+    background: lightgreen;
+}

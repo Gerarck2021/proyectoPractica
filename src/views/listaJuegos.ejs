@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('partials/head')%>
+<body>
+    <h1>Listado de Juegos</h1>
+    <% if(locals && locals.juegos) { %>
+        <ul>
+            <% for(let i = 0; i < juegos.length; i++) { %>
+                <li><a href="/juegos/busquedaJuego?idJuego=<%= juegos[i].idJuego%>"><%= juegos[i].nombre %></a></li>
+            <% } %>
+        </ul>
+    <% } %>
+</body>
+</html>

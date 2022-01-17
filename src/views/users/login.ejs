@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head')%>
+<body>
+    <h1>Ingreso de Usuarios</h1>
+    <form action="" method="POST" class="formulario-login">
+
+        <label for="correo">Correo</label>
+        <input type="email" name="email" class="dato-form" placeholder="usuario@ejemplo.com">
+
+        <label for="contraseña">Contraseña</label>
+        <input type="password" name="contraseña" class="dato-form" placeholder="***********">
+
+        <div>
+            <button type="sumbit" value="Enviar" class="boton">Enviar</button>
+            <button type="reset" value="Limpiar" class="boton">Limpiar</button>
+        </div>
+    </form>
+    <p class="opciones-secundarias">
+        <a href="#">¿Olvidaste tu Contraseña?</a>
+        <a href="/users/registro-usuario">¿Aun no te has registrado?</a>
+    </p>
+</body>
+</html>

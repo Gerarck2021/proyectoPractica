@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('../partials/head') %>
+<body>
+    <h1>Listado de Usuarios</h1>
+    <% if(locals && locals.usuarios) { %>
+        <% if(usuarios.length == 0) { %>
+            <p>No existen usuarios</p>
+        <% } else { %>
+            <% usuarios.forEach(function(item) { %>
+                <h2>Documento</h2>
+                <div>
+                   <%= item.documento %>
+                </div>
+                <h2>Nombre</h2>
+                <div>
+                    <%= item.nombre %>
+                 </div>
+                 <h2>Preferencia</h2>
+                 <div>
+                    <%= item.opcionvista %>
+                 </div>
+                 <h2>Imagen de Usuario</h2>
+                 <div>
+                    <img src="/img/usersImages/<%= item.imagenusuario ? item.imagenusuario : 'default.jpg' %>" alt="">
+                 </div>
+                 <br>
+            <% }) %>
+        <% } %>
+    <% } %>
+</body>
+</html>
