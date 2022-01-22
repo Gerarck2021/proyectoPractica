@@ -1,6 +1,5 @@
 const path = require('path');
 const modelUser = require('../models/index.model');
-const {validationResult} = require('express-validator');
 
 const newId = () => {
 	let ultimo = 0;
@@ -26,7 +25,6 @@ const controller = {
 
     afterRegister: (req, res, next) => {
         let userDB = modelUser.encontrarPorDocumento('documento', req.body.documento);
-
 		if (userDB) {
 			return res.render(path.resolve(__dirname, "../views/users/registro.ejs"), {
 				errors: {
@@ -36,10 +34,6 @@ const controller = {
 				},
 			}); 
 		} else {
-        let errors = validationResult(req);
-        if(!errors.isEmpty()) {
-            res.render(path.resolve(__dirname, '../views/users/registro'), {errores: errors.mapped(), old: req.body});
-        }
             let newUser = {
                 id: newId(),
                 documento: req.body.documento,
@@ -47,7 +41,7 @@ const controller = {
                 correo: req.body.correo,
                 contraseña: req.body.contraseña,
                 opcionvista: req.body.opcionvista,
-                imagenusuario: req.file.filename
+                imagenusuario: req.body.imagenusuario
             }
     
             modelUser.createUser(newUser);
@@ -63,8 +57,17 @@ const controller = {
     },
 
     getUserToEdit: (req, res) => {
+        let usuarios = modelUser.getUsers();
         let idUserUrl = req.params.idUser;
-        res.render(path.resolve(__dirname, '../views/users/userEdit'), { usuario: modelUser.getUsers()[idUserUrl - 1] });
+        for(let i = 0; i < usuarios.length; i++) {
+            if(idUserUrl <= 0 || idUserUrl > usuarios.length) {
+                res.send("Usuario invalido")
+                break;
+            } else {
+                res.render(path.resolve(__dirname, '../views/users/userEdit'), { usuario: modelUser.getUsers()[idUserUrl - 1], usuarios });
+                break;
+            }
+        }
     },
 
     editarUsuario: (req, res) => {
@@ -76,7 +79,7 @@ const controller = {
             correo: req.body.correo,
             contraseña: req.body.contraseña,
             opcionvista: req.body.opcionvista,
-            imagenusuario: req.file.filename
+            imagenusuario: req.body.imagenusuario
         }
         modelUser.updateUser(req.params.idUser, datosUsuario);
         res.redirect('/');
@@ -84,7 +87,16 @@ const controller = {
 
     getUserToDelete: (req, res) => {
         let idUserUrl = req.params.idUser;
-        res.render(path.resolve(__dirname, '../views/users/userDelete'), {usuarioId: idUserUrl});
+        let usuarios = modelUser.getUsers();
+        for(let i = 0; i < usuarios.length; i++) {
+            if(idUserUrl <= 0 || idUserUrl > usuarios.length) {
+                res.send("Usuario no encontrado para eliminar")
+                break;
+            } else {
+                res.render(path.resolve(__dirname, '../views/users/userDelete'), {usuarioId: idUserUrl});
+                break;
+            }
+        }
     },
     eliminarUsuario: (req, res) => {
         let idUserUrl = req.params.idUser;

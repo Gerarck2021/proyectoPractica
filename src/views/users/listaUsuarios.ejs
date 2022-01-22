@@ -2,11 +2,11 @@
 <html lang="en">
     <%-include('../partials/head') %>
 <body>
-    <h1>Listado de Usuarios</h1>
     <% if(locals && locals.usuarios) { %>
         <% if(usuarios.length == 0) { %>
-            <p>No existen usuarios</p>
+            <p>No existen usuarios para mostrar</p>
         <% } else { %>
+            <h1>Listado de Usuarios</h1>
             <% usuarios.forEach(function(item) { %>
                 <h2>Documento</h2>
                 <div>
@@ -22,7 +22,7 @@
                  </div>
                  <h2>Imagen de Usuario</h2>
                  <div>
-                    <img src="/img/usersImages/<%= item.imagenusuario ? item.imagenusuario : 'default.jpg' %>" alt="">
+                    <img src="<%= item.imagenusuario%>" alt="">
                  </div>
                  <br>
             <% }) %>
